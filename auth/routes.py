@@ -53,4 +53,5 @@ async def login(
 
     token = create_access_token({"sub": str(user.id)})
 
+
     return TokenResponse(access_token=token)

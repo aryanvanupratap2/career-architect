@@ -1,5 +1,3 @@
-# app/career/routes.py
-
 from fastapi import APIRouter
 from career.service import generate_career_path
 
@@ -13,3 +11,4 @@ async def generate(data: dict):
 
 
     return {"roadmap": roadmap}
+

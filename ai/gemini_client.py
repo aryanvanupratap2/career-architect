@@ -1,5 +1,3 @@
-# app/ai/gemini_client.py
-
 import os
 import asyncio
 from google import genai
@@ -35,13 +33,11 @@ def _generate(prompt: str, json_output: bool = False):
 
 
 async def generate_text(prompt: str, json_output: bool = False):
-    """
-    Async wrapper so Gemini doesn't block FastAPI event loop
-    """
-
+    # Async wrapper so Gemini doesn't block FastAPI event loop
     try:
         result = await asyncio.to_thread(_generate, prompt, json_output)
         return result
 
     except Exception as e:
         return f"Gemini Error: {str(e)}"
+

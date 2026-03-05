@@ -18,6 +18,5 @@ langgraph
 langchain
 langchain-community
 
-tavily-python
 
 httpx

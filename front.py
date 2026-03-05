@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import re
 
-# --- Configuration ---
+# Configuration
 BASE_URL = "http://localhost:8000"
 
 st.set_page_config(
@@ -10,8 +10,7 @@ st.set_page_config(
     page_icon="🗺️",
     layout="wide"
 )
-
-# --- Roadmap.sh Style CSS ---
+# Styling
 st.markdown("""
     <style>
     /* Main container for the vertical flow */
@@ -65,7 +64,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- Helper Functions ---
+# Helper Functions
 def api_request(method, endpoint, data=None, token=None):
     headers = {"Authorization": f"Bearer {token}"} if token else {}
     url = f"{BASE_URL}{endpoint}"
@@ -80,13 +79,13 @@ def api_request(method, endpoint, data=None, token=None):
     except Exception as e:
         return {"detail": str(e)}, 500
 
-# --- Initialize Session State ---
+# Initialize Session State
 if "token" not in st.session_state:
     st.session_state.token = None
 if "roadmap_result" not in st.session_state:
     st.session_state.roadmap_result = None
 
-# --- SIDEBAR: AUTHENTICATION ---
+# Sidebar: Authentication
 with st.sidebar:
     st.title("🛡️ Auth Portal")
     
@@ -129,7 +128,7 @@ with st.sidebar:
                 else:
                     st.error(res.get("detail", "Registration Failed"))
 
-# --- MAIN INTERFACE ---
+# Main interface
 if not st.session_state.token:
     st.title("🚀 Career Path Architect")
     st.info("Unlock your personalized 6-month career roadmap by logging in.")
@@ -202,4 +201,5 @@ else:
             
             st.markdown('</div>', unsafe_allow_html=True)
         else:
+
             st.info("Provide your details and click 'Generate' to see your step-by-step guide.")

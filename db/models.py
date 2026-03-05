@@ -1,6 +1,7 @@
 from sqlmodel import SQLModel, Field, Relationship
 from typing import Optional, List
 
+# User model for storing user details in database and showing the roadmaps
 class User(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     name: str
@@ -11,7 +12,7 @@ class User(SQLModel, table=True):
 
     career_paths: List["CareerPath"] = Relationship(back_populates="user")
 
-
+# Career model for taking the inputs related to career and showing the final roadmap required as output
 class CareerPath(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     user_id: int = Field(foreign_key="user.id")
@@ -20,3 +21,4 @@ class CareerPath(SQLModel, table=True):
     recommended_path: str
 
     user: Optional[User] = Relationship(back_populates="career_paths")
+

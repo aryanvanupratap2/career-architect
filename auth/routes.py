@@ -10,7 +10,7 @@ from schemas.user import RegisterRequest, LoginRequest, TokenResponse
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
 
-# ✅ REGISTER
+# Register
 @router.post("/register")
 async def register(
     data: RegisterRequest,
@@ -38,7 +38,7 @@ async def register(
     return {"message": "User registered successfully"}
 
 
-# ✅ LOGIN
+# Login
 @router.post("/login", response_model=TokenResponse)
 async def login(
     data: LoginRequest,
@@ -55,3 +55,4 @@ async def login(
 
 
     return TokenResponse(access_token=token)
+

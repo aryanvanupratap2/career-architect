@@ -11,6 +11,7 @@ bcrypt==4.0.1
 
 python-dotenv
 pydantic
+email-validator
 
 google-genai
 
@@ -18,5 +19,7 @@ langgraph
 langchain
 langchain-community
 
-streamlit
+tavily-python
+
 httpx
+streamlit

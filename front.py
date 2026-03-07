@@ -1,9 +1,13 @@
 import streamlit as st
 import requests
 import re
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Configuration
-BASE_URL = "http://localhost:8000"
+BASE_URL = os.getenv("API_URL")
 
 st.set_page_config(
     page_title="Career AI Architect",
@@ -203,3 +207,4 @@ else:
         else:
 
             st.info("Provide your details and click 'Generate' to see your step-by-step guide.")
+
